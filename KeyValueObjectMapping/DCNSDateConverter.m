@@ -37,6 +37,10 @@
     }else{
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = self.pattern;
+        /* Code to fix the issue here */
+        if ([value isKindOfClass:NSNull.class]) {
+            return nil;
+        }
         return [formatter dateFromString:value];
     }
 }
